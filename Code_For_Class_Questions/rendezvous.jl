@@ -1,5 +1,5 @@
 using Plots
-
+using Random
 function random_algo(N)
     index = 1;
     while(random_flip(N) != random_flip(N))
@@ -37,11 +37,12 @@ function get_rand_location(N)
     return rand(1:N)
 end
 
-ns = LinRange(1,10000,100)
-times = 100
+ns = LinRange(1,1000,100)
+times = 1000
 randoms = map((x) -> algo_wrapper(floor(x),times,random_algo),ns)
 println("\n")
 stay_puts = map((x) -> algo_wrapper(floor(x),times,stay_put_algo),ns)
 
-p = scatter(ns, stay_put_algo,color = "green",xlabel = "number of shops", ylabel = "days taken",bg = RGB(0.2, 0.2, 0.2), smooth=:true)
-scatter!(p,ns,randoms, smooth=:true)
+p = plot(ns, stay_puts,color = "green",xlabel = "number of shops", ylabel = "days taken",bg = RGB(0.2, 0.2, 0.2), smooth=:true)
+plot!(p,ns,randoms, smooth=:true)
+# scatter!(p,ns,true_rands, smooth=:true)
