@@ -23,11 +23,10 @@ end
 function stay_put_algo(N)
     index = 1;
     loc = get_rand_location(N)
-    return loc
-    while(index < loc)
-        index += 1
-    end
-    return index
+    # while(index < loc)
+    #     index += 1
+    # end
+    return loc;
 end
 
 function random_flip(N)
@@ -38,7 +37,7 @@ function get_rand_location(N)
     return rand(1:N)
 end
 
-ns = LinRange(1,1000,1000)
+ns = LinRange(1,10000,100)
 times = 100
 randoms = map((x) -> algo_wrapper(floor(x),times,random_algo),ns)
 println("\n")
