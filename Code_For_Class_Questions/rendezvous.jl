@@ -23,7 +23,8 @@ end
 function stay_put_algo(N)
     index = 1;
     loc = get_rand_location(N)
-    while(index != loc)
+    return loc
+    while(index < loc)
         index += 1
     end
     return index
@@ -37,13 +38,11 @@ function get_rand_location(N)
     return rand(1:N)
 end
 
-ns = LinRange(1,100000,100000)
-
-println(ns)
-times = 1
-# randoms = map((x) -> algo_wrapper(x,times,random_algo),ns)
+ns = LinRange(1,1000,1000)
+times = 100
+randoms = map((x) -> algo_wrapper(floor(x),times,random_algo),ns)
 println("\n")
-stay_puts = map((x) -> algo_wrapper(x,times,stay_put_algo),ns)
+stay_puts = map((x) -> algo_wrapper(floor(x),times,stay_put_algo),ns)
 
 p = scatter(ns, stay_put_algo,color = "green",xlabel = "number of shops", ylabel = "days taken",bg = RGB(0.2, 0.2, 0.2), smooth=:true)
-# plot!(p,ns,stay_put_algo)
+scatter!(p,ns,randoms, smooth=:true)
