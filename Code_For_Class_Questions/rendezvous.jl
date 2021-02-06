@@ -43,6 +43,6 @@ randoms = map((x) -> algo_wrapper(floor(x),times,random_algo),ns)
 println("\n")
 stay_puts = map((x) -> algo_wrapper(floor(x),times,stay_put_algo),ns)
 
-p = plot(ns, stay_puts,color = "green",xlabel = "number of shops", ylabel = "days taken",bg = RGB(0.2, 0.2, 0.2), smooth=:true)
-plot!(p,ns,randoms, smooth=:true)
+p = plot(ns, stay_puts,color = "green",xlabel = "number of shops",legend = :outertopleft, ylabel = "days taken",labels="wait for mommy",bg = RGB(0.2, 0.2, 0.2), smooth=:true)
+plot!(p,ns,randoms, smooth=:true, labels="random")
 # scatter!(p,ns,true_rands, smooth=:true)

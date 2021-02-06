@@ -15,7 +15,7 @@ def algo_wrapper(N,times, fn):
     while index < times:
         count += fn(N)
         index += 1
-    print "progress: %d\r" % N 
+    print ("progress: %d\r", N) 
     sys.stdout.flush()
     return (count / times)
 
